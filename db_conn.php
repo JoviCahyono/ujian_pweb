@@ -4,10 +4,10 @@ $username = "root";
 $password = "";
 $dbname = "dbcrud";
 
-// buat koneksi
+// Membuat koneksi ke database
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-// cek koneksi
+// Memeriksa koneksi
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }

@@ -1,4 +1,5 @@
 <?php
+// Menggunakan file koneksi database
 include "db_conn.php";
 ?>
 
@@ -131,6 +132,7 @@ include "db_conn.php";
 
     <div class="container">
         <?php
+        // Menampilkan pesan jika ada
         if (isset($_GET["msg"])) {
             $msg = $_GET["msg"];
             echo '<div class="alert">
@@ -138,8 +140,11 @@ include "db_conn.php";
             </div>';
         }
         ?>
+        
+        <!-- Tombol untuk menambah pengguna baru -->
         <a href="add.php" class="btn btn-dark">Add</a>
 
+        <!-- Tabel untuk menampilkan data pengguna -->
         <table>
             <thead>
                 <tr>
@@ -153,8 +158,11 @@ include "db_conn.php";
             </thead>
             <tbody>
                 <?php
+                // Mengambil data pengguna dari database
                 $sql = "SELECT * FROM `crud`";
                 $result = mysqli_query($conn, $sql);
+
+                // Menampilkan data pengguna dalam bentuk baris tabel
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                     <tr>
@@ -164,20 +172,25 @@ include "db_conn.php";
                         <td><?php echo $row["email"] ?></td>
                         <td><?php echo $row["gender"] ?></td>
                         <td>
+                            <!-- Tombol Edit yang mengarah ke halaman edit.php -->
                             <a href="edit.php?id=<?php echo $row["id"] ?>" class="btn btn-edit">Edit</a>
+                            
+                            <!-- Tombol Delete dengan fungsi onclick untuk konfirmasi -->
                             <a href="javascript:void(0);" class="btn btn-delete" onclick="confirmDelete(<?php echo $row["id"] ?>)">Delete</a>
                         </td>
                     </tr>
                 <?php
                 }
                 ?>
+
+                <!-- Fungsi JavaScript untuk konfirmasi delete -->
                 <script>
-                function confirmDelete(id) {
-                    if (confirm("Apakah anda yakin untuk delete?")) {
-                        window.location.href = "delete.php?id=" + id;
+                    function confirmDelete(id) {
+                        if (confirm("Apakah anda yakin untuk menghapus?")) {
+                            window.location.href = "delete.php?id=" + id;
+                        }
                     }
-                }
-            </script>
+                </script>
            </tbody>
         </table>
     </div>

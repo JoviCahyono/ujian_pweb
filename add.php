@@ -1,23 +1,30 @@
 <?php
+// Include file untuk koneksi ke database
 include "db_conn.php";
 
+// Jika tombol "Save" ditekan pada formulir
 if (isset($_POST["submit"])) {
-   $first_name = $_POST['first_name'];
-   $last_name = $_POST['last_name'];
-   $email = $_POST['email'];
-   $gender = $_POST['gender'];
+    // Mengambil nilai-nilai dari formulir
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $email = $_POST['email'];
+    $gender = $_POST['gender'];
 
-   $sql = "INSERT INTO `crud`(`id`, `first_name`, `last_name`, `email`, `gender`) VALUES (NULL,'$first_name','$last_name','$email','$gender')";
+    // Membuat query SQL untuk menambahkan data ke dalam tabel 'crud'
+    $sql = "INSERT INTO `crud`(`id`, `first_name`, `last_name`, `email`, `gender`) VALUES (NULL,'$first_name','$last_name','$email','$gender')";
 
-   $result = mysqli_query($conn, $sql);
+    // Menjalankan query menggunakan koneksi ke database
+    $result = mysqli_query($conn, $sql);
 
-   if ($result) {
-      header("Location: index.php?msg=New record created successfully");
-   } else {
-      echo "Failed: " . mysqli_error($conn);
-   }
+    // Memeriksa apakah query berhasil dijalankan
+    if ($result) {
+        // Jika berhasil, arahkan kembali ke halaman indeks dengan pesan sukses
+        header("Location: index.php?msg=New record created successfully");
+    } else {
+        // Jika gagal, tampilkan pesan kesalahan
+        echo "Failed: " . mysqli_error($conn);
+    }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -119,15 +126,19 @@ if (isset($_POST["submit"])) {
         </div>
 
         <form action="" method="post">
+            <!-- Input untuk Nama Depan -->
             <label for="first_name">First Name:</label>
             <input type="text" name="first_name" placeholder="First Name">
 
+            <!-- Input untuk Nama Belakang -->
             <label for="last_name">Last Name:</label>
             <input type="text" name="last_name" placeholder="Last Name">
 
+            <!-- Input untuk Email -->
             <label for="email">Email:</label>
             <input type="email" name="email" placeholder="name@example.com">
 
+            <!-- Pilihan Jenis Kelamin -->
             <div class="gender-label">Gender:</div>
             <div class="gender-options">
                 <input type="radio" name="gender" id="male" value="male">
@@ -137,7 +148,10 @@ if (isset($_POST["submit"])) {
                 <label for="female">Female</label>
             </div>
 
+            <!-- Tombol untuk Menyimpan Data -->
             <button type="submit" name="submit">Save</button>
+            
+            <!-- Tautan untuk Membatalkan Aksi dan Kembali ke Halaman Indeks -->
             <a href="index.php">Cancel</a>
         </form>
     </div>
