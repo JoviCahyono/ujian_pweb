@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
         }
 
         nav {
-            background-color: #004080; /* Warna biru tua yang serasi dengan latar belakang */
+            background-color: #007bff; /* Dark Blue */
             color: #fff;
             text-align: center;
             font-size: 1.5em;
@@ -111,7 +111,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Form</nav>
+    <nav class="navbar navbar-light justify-content-center fs-3 mb-5">Form</nav>
 
     <div class="container">
         <div style="text-align: center; margin-bottom: 20px;">

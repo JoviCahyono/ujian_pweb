@@ -165,12 +165,19 @@ include "db_conn.php";
                         <td><?php echo $row["gender"] ?></td>
                         <td>
                             <a href="edit.php?id=<?php echo $row["id"] ?>" class="btn btn-edit">Edit</a>
-                            <a href="delete.php?id=<?php echo $row["id"] ?>" class="btn btn-delete">Delete</a>
+                            <a href="javascript:void(0);" class="btn btn-delete" onclick="confirmDelete(<?php echo $row["id"] ?>)">Delete</a>
                         </td>
                     </tr>
                 <?php
                 }
                 ?>
+                <script>
+                function confirmDelete(id) {
+                    if (confirm("Apakah anda yakin untuk delete?")) {
+                        window.location.href = "delete.php?id=" + id;
+                    }
+                }
+            </script>
            </tbody>
         </table>
     </div>
