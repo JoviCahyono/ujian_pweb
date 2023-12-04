@@ -121,12 +121,12 @@ include "db_conn.php";
         }
     </style>
 
-    <title>PHP CRUD</title>
+    <title>Aplikasi Pencatatan Pengguna</title>
 </head>
 
 <body>
     <nav>
-        Database
+        Aplikasi Pencatatan Pengguna
     </nav>
 
     <div class="container">
